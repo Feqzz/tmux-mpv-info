@@ -9,7 +9,17 @@ mpv_communicate() {
 
 ARTIST="$(mpv_communicate "metadata/list/0/value")"
 TITLE="$(mpv_communicate "metadata/list/1/value")"
+PAUSED="$(mpv_communicate "core-idle")"
 
-OUTPUT="♫ $ARTIST - $TITLE"
+if [ "$PAUSED" = true ]
+then
+	OUTPUT="♫ ⏸ $ARTIST - $TITLE"
+else
+	OUTPUT="♫ $ARTIST - $TITLE"
+fi
 
-printf "%s\n" "$OUTPUT"
+if [ ! -z "$ARTIST" ]
+then
+	printf "%s\n" "$OUTPUT"
+fi
+

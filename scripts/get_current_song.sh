@@ -7,8 +7,8 @@ mpv_communicate() {
 	  printf '{ "command": ["get_property", "%s"] }\n' "$1" | socat - "${SOCKET}" | jq -r ".data"
   }
 
-ARTIST="$(mpv_communicate "metadata/list/0/value")"
-TITLE="$(mpv_communicate "metadata/list/1/value")"
+ARTIST="$(mpv_communicate "metadata/ARTIST")"
+TITLE="$(mpv_communicate "metadata/TITLE")"
 PAUSED="$(mpv_communicate "core-idle")"
 
 if [ "$PAUSED" = true ]

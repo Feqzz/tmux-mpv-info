@@ -34,6 +34,10 @@ Edit your `.tmux.conf` file and add `#{mpv_info}` to your `status-right`. Simple
 ``` tmux
 set -g status-right "#{mpv_info}"
 ```
+As the length of some song titles can be very long, it can be useful to add this line to your `.tmux.conf` to avoid overflow.
+``` tmux
+set -g status-right-length 200
+```
 ### MPV
 To actually use the plugin with mpv, a mpvsocket has to be initiated in /tmp/mpvsocket. This can easily be done by adding this flag:
 ``` bash

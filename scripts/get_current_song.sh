@@ -8,18 +8,23 @@ mpv_communicate() {
   }
 
 ARTIST="$(mpv_communicate "metadata/ARTIST")"
-TITLE="$(mpv_communicate "metadata/TITLE")"
+
+if [ -z "$ARTIST"]
+then
+	exit 0
+fi
+
+SONG_TITLE="$(mpv_communicate "metadata/TITLE")"
 PAUSED="$(mpv_communicate "core-idle")"
+
+PURPLE='#[fg=colour5]'
+DEFAULT='#[default]'
 
 if [ "$PAUSED" = true ]
 then
-	OUTPUT="⏸ $ARTIST - $TITLE"
+	ICON="⏸"
 else
-	OUTPUT="♫ $ARTIST - $TITLE"
+	ICON="♫"
 fi
 
-if [ ! -z "$ARTIST" ]
-then
-	printf "%s\n" "$OUTPUT"
-fi
-
+printf "${PURPLE}$ICON${DEFAULT} $ARTIST - $SONG_TITLE"

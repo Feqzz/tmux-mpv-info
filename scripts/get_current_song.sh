@@ -13,7 +13,7 @@ PAUSED="$(mpv_communicate "core-idle")"
 
 if [ "$PAUSED" = true ]
 then
-	OUTPUT="♫ ⏸ $ARTIST - $TITLE"
+	OUTPUT="⏸ $ARTIST - $TITLE"
 else
 	OUTPUT="♫ $ARTIST - $TITLE"
 fi

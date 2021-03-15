@@ -9,7 +9,7 @@ mpv_communicate() {
 
 ARTIST="$(mpv_communicate "metadata/ARTIST")"
 
-if [ -z "$ARTIST"]
+if [ -z "$ARTIST" ] || [ "$ARTIST" = "null" ]
 then
 	exit 0
 fi
